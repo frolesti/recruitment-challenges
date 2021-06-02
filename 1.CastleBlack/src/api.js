@@ -20,4 +20,8 @@ api.get("/objects", function(req, res) {
   res.json(objects);
 });
 
-module.exports = api;
+module.exports = {
+  api,
+  players, 
+  objects,
+};

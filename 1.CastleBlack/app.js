@@ -2,7 +2,7 @@ const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
 const consola = require("consola");
-const router = require("./src/router.js");
+const router = require("./server/routes/router.js");
 const api = require("./src/api.js");
 const morgan = require("morgan");
 const path = require("path");
@@ -24,15 +24,11 @@ async function run() {
   app.set("view engine", "ejs");
 
   //getting assets from src
-  app.use("/css", express.static(path.resolve(__dirname, "src/css")));
+  app.use("/src", express.static("src"));
   app.use("/js", express.static(path.resolve(__dirname, "src/js")));
   app.use("/img", express.static(path.resolve(__dirname, "src/img")));
 
-  //getting views
-  app.get("/", (req, res) => {
-    res.render("index");
-  })
-
+  //getting views from router
   app.use("/", router);
   app.use("/api", api);
 
