@@ -12,8 +12,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "consola": "^2.10.1",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "mongoose": "^5.12.12",
     "morgan": "^1.10.0",
     "path": "^0.12.7"
   },

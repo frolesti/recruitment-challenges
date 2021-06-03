@@ -4,10 +4,15 @@ const bodyParser = require("body-parser");
 const consola = require("consola");
 const router = require("./server/routes/router.js");
 const api = require("./src/api.js");
+
+const dotenv = require("dotenv");
 const morgan = require("morgan");
 const path = require("path");
 
+const connectDB = require("./server/database/connection");
 const app = express();
+
+dotenv.config({path: "config.env"});
 const host = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT || 8080;
 app.set("port", port);
@@ -19,6 +24,9 @@ async function run() {
 
   //logging requests
   app.use(morgan("tiny"));
+
+  //mongodb connection
+  connectDB();
 
   //setting view engine
   app.set("view engine", "ejs");
