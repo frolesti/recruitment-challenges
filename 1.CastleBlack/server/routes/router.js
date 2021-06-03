@@ -16,7 +16,7 @@ router.get("/update-player", services.updatePlayerRoute);
 router.post("/api/players", playersController.create);
 router.get("/api/players", playersController.find);
 router.put("/api/players/:id", playersController.update);
-router.delete("/api/players", playersController.delete);
+router.delete("/api/players/:id", playersController.delete);
 
 
 // router.get("/health", function(req, res) {

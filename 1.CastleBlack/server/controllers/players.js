@@ -28,13 +28,34 @@ exports.create = (req, res) => {
 
 //retrieve players
 exports.find = (req, res) => {
-    playerDB.find()
+
+    if(req.query.id){
+        const id = req.query.id;
+        
+        //getting a single player by id
+        playerDB.findById(id)
+            .then(data => {
+                if(!data){
+                    res.status(400).send({message: "There is no player with such id."})
+                }
+                else {
+                    res.send(data)
+                }
+            })
+            .catch(err => {
+                res.status(500).send({message: "Error occurred while retrieving information"})
+            })
+    } else {
+         //getting all players
+        playerDB.find()
         .then(player => {
             res.send(player)
         })
         .catch(err => {
             res.status(500).send({message:err.message|| "Error recieved when trying to retrieve user's info" })
         })
+    }
+
 };
 
 //update player by id
