@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Castle Black!</title>
+    <title>Welcome to Castle Black</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
 </head>
 <body>
-    
-</body>
-</html>
+    <header>
+        <h2>Create your new player</h2>
+    </header>
+    <form method="POST" id="update_player">
+        <div class="btnInForm_container">
+            <button class="backFormBtn">
+                <a href="/start"> Go back </a>
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="name" class="">Name:</label>
+            <input type="hidden" name="id" value="<%= player._id %>">
+            <input type="text" name="name" value="<%= player.name %>" placeholder="Jon Snow">
+        </div>
+        <div class="form-group">
+            <label for="age" class="">Age:</label>
+            <input type="number" name="age" value="<%= player.age %>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="description" class=""> House: </label>
+            <input type="text" name="description" value="<%= player.description %>" placeholder="Stark">
+        </div>
+        <div class="form-group">
+            <label for="bag" class="">Choose an object:</label>
+            <div class="form-objects_container">
+                <label>
+                    <input type="radio" name="bag" value="Spoon">
+                    <img src="../src/img/wooden-spoon.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Knife">
+                    <img src="../src/img/dagger.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Sword">
+                    <img src="../src/img/sword.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Potion">
+                    <img src="../src/img/bottle.svg">
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="saveBtn">Save</button>
+        </div>
+        
+
+        
+    </form>
+    <%- include("footer") %>

@@ -20,32 +20,126 @@ h1, h2 {
     font-family: 'Press Start 2P', cursive;
 }
 
-.btn_container {
-    text-align: center;
+p {
+    font-size: 18px;
 }
 
-.startBtn {
+.btn_container {
+    text-align: center;
+    height: 60px;
+}
+
+.btnInForm_container {
+    height: 10px;
+}
+
+button {
     width: 100px;
     height: 40px;
     font-size: large;
 }
 
-.startBtn > a {
+button > a {
     text-decoration: none;
 }
 
+.backBtn {
+    position: absolute;
+    left: 100px;
+}
+.saveBtn {
+    position: relative;
+    left: 0px;
+}
 .char_cards_container {
     display: flex;
-    flex-flow: row-wrap;
+    flex-flow: row wrap;
     margin: 0 auto;
     width: 80%;
 }
 
 .char_card {
-    width: auto;
-    max-width: 200px;
+    width: 25%;
     margin: 20px;
     padding: 15px;
     border: 1px solid var(--border);
     border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
 }
+
+.title {
+    text-align: center;
+    height: 100px;
+}
+.char_name {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.char_description, .char_age, .char_objects, .char_health {
+    font-size: 28px;
+    text-align: center;
+    margin: 10px;
+}
+
+.player_btns_container {
+    margin: 20px 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+
+form {
+    margin: 0 auto;
+    width: 50%;
+}
+.form-group {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 25px;
+}
+
+label {
+    margin: 20px;
+    font-size:20px;
+}
+input {
+    height: 30px;
+    width: auto;
+    text-align: center;
+}
+
+.form-objects_container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+img {
+    height: 40px;
+    width: auto;
+    padding: 10px;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + img {
+    cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + img {
+    outline: 2px solid var(--border);
+  }

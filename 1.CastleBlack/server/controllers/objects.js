@@ -1,4 +1,4 @@
-let playerDB = require("../models/model");
+let objectDB = require("../models/model");
 
 //we'll validate all requests for each method
 //creat & save a new player
@@ -8,17 +8,14 @@ exports.create = (req, res) => {
     return;
   }
 
-  //new player
-  const player = new playerDB({
+  //setting objects
+  const object = new objectDB({
     name: req.body.name,
-    age: req.body.age,
-    description: req.body.description,
-    health: req.body.health,
-    bag: req.body.bag,
+    value: req.body.value,
   });
 
-  //save player in db
-  player.save(player).then(data => {
+  //save object in db
+  object.save(object).then(data => {
     // res.send(data);
     res.redirect("/start")
   }).catch(err => {
@@ -35,10 +32,10 @@ exports.find = (req, res) => {
         const id = req.query.id;
         
         //getting a single player by id
-        playerDB.findById(id)
+        objectDB.findById(id)
             .then(data => {
                 if(!data){
-                    res.status(400).send({message: "There is no player with such id."})
+                    res.status(400).send({message: "There is no object with such id."})
                 }
                 else {
                     res.send(data)
@@ -49,7 +46,7 @@ exports.find = (req, res) => {
             })
     } else {
          //getting all players
-        playerDB.find()
+        objectDB.find()
         .then(player => {
             res.send(player)
         })
@@ -60,7 +57,7 @@ exports.find = (req, res) => {
 
 };
 
-//update player by id
+//update object by id
 exports.update = (req, res) => {
     if(!req.body){
         return res
@@ -70,16 +67,16 @@ exports.update = (req, res) => {
     }
 
     const id=req.params.id
-    playerDB.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+    objectDB.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
         .then(data => {
             if(!data){
-                res.status(400).send({message: `Cannot update player with id: ${id}. This player may not exist.`})
+                res.status(400).send({message: `Cannot update object with id: ${id}. This object may not exist.`})
             } else {
                 res.send(data);
             }
         })
         .catch(err => {
-            res.status(500).send({message: "Error updating player information"})
+            res.status(500).send({message: "Error updating object information"})
         })
 
 };
@@ -88,10 +85,10 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    playerDB.findByIdAndDelete(id)
+    objectDB.findByIdAndDelete(id)
         .then(data => {
             if(!data){
-                res.status(400).send({message: `Cannot delete player with id: ${id}. Id must be wrong.`})}
+                res.status(400).send({message: `Cannot delete object with id: ${id}. Id must be wrong.`})}
             else {
                 res.send({message: "Player succesfully deleted!"})
             }

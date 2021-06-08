@@ -9,6 +9,10 @@ let playerSchema = new mongoose.Schema({
         type: Number,
         default: "Unknown"
     },
+    description: {
+        type: String,
+        default: "We don't know much about this character..."
+    },
     health: {
         type: Number,
         default: 100,
@@ -19,6 +23,7 @@ let playerSchema = new mongoose.Schema({
         default: [],
         required: true
     }
+
 })
 
 let objectSchema = new mongoose.Schema({
@@ -26,6 +31,7 @@ let objectSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
+
     value: {
         type: Number,
         required: true
@@ -35,4 +41,4 @@ let objectSchema = new mongoose.Schema({
 const playerDB = mongoose.model("playerDB", playerSchema);
 const objectDB = mongoose.model("objectDB", objectSchema)
 
-module.exports = playerDB;
+module.exports = playerDB, objectDB;

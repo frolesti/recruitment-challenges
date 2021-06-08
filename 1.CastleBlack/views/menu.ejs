@@ -10,10 +10,19 @@
 </head>
 <body>
     <header>
+        <div class="btn_container">
+            <button class="backBtn">
+                <a href="/"> Go back </a>
+            </button>
+        </div>
         <h2>Choose your character!</h2>
     </header>
     <div class="char_cards_container">
         <%- include("playerCard") %>
     </div>
-</body>
-</html>
+    <div class="btn_container">
+        <button class="createBtn">
+            <a href="/create-player"> Add Player </a>
+        </button>
+    </div>
+    <%- include("footer") %>

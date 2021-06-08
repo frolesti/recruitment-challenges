@@ -1,13 +1,22 @@
 <% for(var i=0; i < players.length; i++){%>
-        <div class="char_card">
-            <div class="title">
-                <p class="char_name"><%= players[i].name%></p>
-            </div>
-            <div class="char_img">
-                <div class="img_container">
-                </div>
-            <div class="char_description"><%= players[i].age%></div>
-            <div class="char_objects"><%= players[i].bag%></div>
-            </div>
-        </div>
+<div class="char_card">
+  <div class="title">
+    <p class="char_name"><%= players[i].name%></p>
+  </div>
+  <div class="char_img">
+    <div class="img_container"></div>
+  </div>
+  <div class="char_age">Age: <%= players[i].age%></div>
+  <div class="char_description">House: <%= players[i].description%></div>
+  <div class="char_health">Health: <%= players[i].health%></div>
+  <div class="char_objects">Armed with: <%= players[i].bag%></div>
+  <div class="player_btns_container">
+    <button class="updateBtn">
+      <a href="/update-player?id=<%= players[i]._id %>">Update</a>
+    </button>
+    <button class="playBtn">
+      <a href="/combat">Play!</a>
+    </button>
+  </div>
+</div>
 <%}%>

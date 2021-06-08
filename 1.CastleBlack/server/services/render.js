@@ -21,5 +21,11 @@ exports.createPlayerRoute = (req, res) => {
 }
 
 exports.updatePlayerRoute = (req, res) => {
-    res.render("updatePlayer");
+    axios.get("http://localhost:8080/api/players", {params: {id: req.query.id}})
+        .then(function(playerData){
+            res.render("updatePlayer", { player: playerData.data})
+        })
+        .catch(err => {
+            res.send(err);
+        })
 }

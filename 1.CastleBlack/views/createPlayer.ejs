@@ -11,10 +11,53 @@
 </head>
 <body>
     <header>
-        <h1>Create your new player</h1>
+        <h2>Create your new player</h2>
     </header>
-    <form>
+    <form action="/api/players" method="POST" id="create_player">
+        <div class="btnInForm_container">
+            <button class="backFormBtn">
+                <a href="/start"> Go back </a>
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="name" class="">Name:</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="name" value="" placeholder="Jon Snow">
+        </div>
+        <div class="form-group">
+            <label for="age" class="">Age:</label>
+            <input type="number" name="age" value="" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="description" class=""> House: </label>
+            <input type="text" name="description" value="" placeholder="Stark">
+        </div>
+        <div class="form-group">
+            <label for="bag" class="">Choose an object:</label>
+            <div class="form-objects_container">
+                <label>
+                    <input type="radio" name="bag" value="Spoon">
+                    <img src="../src/img/wooden-spoon.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Knife">
+                    <img src="../src/img/dagger.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Sword">
+                    <img src="../src/img/sword.svg">
+                </label>
+                <label>
+                    <input type="radio" name="bag" value="Potion">
+                    <img src="../src/img/bottle.svg">
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="saveBtn">Save</button>
+        </div>
+        
+
         
     </form>
-</body>
-</html>
+    <%- include("footer") %>
